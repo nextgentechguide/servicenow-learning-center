@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Build a ServiceNow Change Request Approval Workflow: A Practical Developer Project</title>
+  <meta name="description" content="Follow a practical ServiceNow change request approval workflow project, from requirements and records to Flow Designer, validation, access, and testing.">
+  <link rel="canonical" href="https://nextgentechguide.github.io/servicenow-learning-center/blogs/servicenow-change-request-approval-workflow-bangalore.html">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <header class="site-header"><div class="container nav-wrap">
+    <a class="brand" href="../index.html"><span class="brand-mark">S</span><span>ServiceNow <span class="brand-light">Learning Center</span></span></a>
+    <nav aria-label="Main navigation"><a href="../index.html">Home</a><a class="active" href="../blogs.html">Blogs</a></nav>
+  </div></header>
+  <main>
+    <section class="article-hero"><div class="container article-container">
+      <a class="back-link" href="../blogs.html">← All blogs</a>
+      <p class="eyebrow">Hands-on development · Bangalore</p>
+      <h1>Build a ServiceNow Change Request Approval Workflow: A Practical Developer Project</h1>
+      <p class="article-deck">Use a familiar IT change scenario to practise requirement analysis, record design, approvals, validation, and testing in a ServiceNow learning instance.</p>
+      <div class="article-meta"><span>ServiceNow development</span><span>8 min read</span></div>
+    </div></section>
+    <article class="section"><div class="container article-container article-body">
+      <p>A change to an IT service can affect users, business operations, and other technical teams. That is why organisations generally want a controlled way to record proposed changes, review their impact, obtain the right approvals, and track what happened. Building a small change request approval workflow is a useful practice exercise because it connects platform configuration with a recognisable IT service management process.</p>
+
+      <p>For learners exploring <strong>ServiceNow developer training in Bangalore</strong>, this kind of exercise can help turn separate platform concepts into one coherent example. The goal here is to understand the design and development decisions—not to copy a production process blindly. Use a permitted personal or training instance and adapt the exercise to the features available in that environment.</p>
+
+      <h2>1. Start with the process, not the flow</h2>
+      <p>Imagine a team needs to submit a planned change to a non-production application. A reviewer should assess the request before work proceeds. Before opening Flow Designer, write down the expected journey:</p>
+      <ul>
+        <li>A requester records what will change and why it is needed.</li>
+        <li>The request includes a planned window, affected service, and impact information.</li>
+        <li>A designated reviewer evaluates the request and records a decision.</li>
+        <li>The request moves to an appropriate next state after approval or rejection.</li>
+        <li>The outcome and relevant notes remain available for later review.</li>
+      </ul>
+      <p>Real change-management processes can be more detailed, with different paths for standard, normal, and emergency changes. Keep this learning example deliberately small and check the current ServiceNow product documentation when working with the full change-management application.</p>
+
+      <h2>2. Identify the records and information</h2>
+      <p>In a real ServiceNow environment, change management uses the platform's change records and related data model. For a guided exercise, first inspect the tables, fields, and relationships already available in your instance rather than creating duplicate structures. Understand which fields capture the short description, rationale, affected service or configuration item, risk or impact, planned dates, assignment, and approval information.</p>
+      <p>Think about data quality as you design the form. Which details must be supplied before submission? Which values should be selected from a reference list? Which information should be read-only for a requester? A well-designed form reduces ambiguity before the approval process even begins.</p>
+
+      <h2>3. Map the approval rules</h2>
+      <p>Write the approval criteria in plain language. For example, the exercise might require a designated reviewer for every planned change, with an additional review when the stated impact is high. Define what should happen if no approver can be identified, if a request is rejected, or if the planned window is missing.</p>
+      <p>Keep the rules explicit and reviewable. Avoid hiding important business decisions inside a long script. If the approval policy changes, a teammate should be able to find the relevant condition and understand why the workflow follows that route.</p>
+
+      <h2>4. Orchestrate the process with Flow Designer</h2>
+      <p>Once the process and conditions are clear, consider using Flow Designer to coordinate the steps. At a high level, a flow for this practice scenario could start when a qualifying change record is created or updated, check that the required information is present, request approval from the appropriate person or group, and then follow separate outcomes for approval and rejection.</p>
+      <p>Use the trigger and actions that match your instance and the process you have defined. Confirm the available actions and data pills in the current interface; labels and capabilities can vary by release, plugins, and configuration. Keep the flow readable by using meaningful names and grouping related steps logically.</p>
+
+      <h2>5. Put validation in the right place</h2>
+      <p>Client Scripts can improve the form experience—for example, by guiding a user when a related field changes. But a client-side check should not be the only protection for an important rule. Where a condition must hold for every update, consider appropriate server-side enforcement and platform configuration.</p>
+      <p>Business Rules are useful for server-side behaviour tied to record operations, while Script Includes can organise reusable server-side logic where scripting is genuinely needed. Do not add code just to demonstrate that you can write it. Prefer a straightforward configuration or flow when it is sufficient, and follow your team's development standards.</p>
+
+      <h2>6. Test the normal path and the exceptions</h2>
+      <p>A successful approval is only one test. Prepare a small test plan before calling the exercise complete:</p>
+      <ul>
+        <li>A complete request follows the expected approval route.</li>
+        <li>A request missing a required detail is stopped or clearly flagged.</li>
+        <li>An approval sends the record to the intended next state.</li>
+        <li>A rejection records the decision and does not continue as approved.</li>
+        <li>A user without the required access cannot perform restricted actions.</li>
+        <li>Repeated updates do not create unintended duplicate approvals.</li>
+      </ul>
+      <p>Use sample data only. Check the record history, flow execution details, and relevant logs available in your instance. If something fails, reproduce it with a small test case and inspect the conditions and data passed between steps.</p>
+
+      <h2>7. Document the design as a developer</h2>
+      <p>Keep a short project note with the business scenario, process diagram, fields involved, approval conditions, platform features used, and test results. Explain why you used Flow Designer for orchestration and where validation belongs. Mention any limitations—for example, that the exercise uses a simplified approval policy and does not represent a complete enterprise change process.</p>
+      <p>This documentation helps another person review your work and gives you a useful way to explain your reasoning in a technical discussion. Never include credentials, real employee information, customer details, or screenshots containing sensitive data.</p>
+
+      <h2>What to look for in ServiceNow developer training in Bangalore</h2>
+      <p>When comparing <strong>ServiceNow developer training in Bangalore</strong>, ask whether the learning path includes practical work that connects tables, forms, Flow Designer, client-side behaviour, server-side rules, access controls, and testing. Find out whether you build an end-to-end scenario, receive feedback on your implementation, and learn to troubleshoot failures—not just follow a demonstration.</p>
+      <p>Review the current syllabus, prerequisites, practice environment, delivery format, and learner support before choosing a programme. Certification preparation can be part of a learning plan, but the ability to explain and test your own work is equally important.</p>
+      <p>You can review <a href="https://www.techpratham.com/courses/servicenow-developer-certification-training" target="_blank" rel="noopener noreferrer">TechPratham's ServiceNow developer certification training details</a> as one option while comparing course content and practical coverage with your goals.</p>
+
+      <h2>Build understanding one workflow at a time</h2>
+      <p>A change approval exercise is valuable because it asks you to think about the whole process: what information is needed, who makes a decision, how the platform coordinates the steps, and how you know the result is correct. Start with a small scope, test the exceptions, and document your choices. Those habits provide a stronger foundation for ServiceNow development than simply collecting a list of features.</p>
+      <p>For more on presenting your practical work, read our guide to <a href="servicenow-developer-portfolio-bangalore.html">building a ServiceNow developer portfolio with focused projects</a>.</p>
+    </div></article>
+  </main>
+  <footer class="site-footer"><div class="container footer-wrap"><a class="brand footer-brand" href="../index.html"><span class="brand-mark">S</span><span>ServiceNow <span class="brand-light">Learning Center</span></span></a><p>Independent learning notes and practical guides for ServiceNow learners.</p><span class="copyright">© 2026 ServiceNow Learning Center</span></div></footer>
+</body>
+</html>
